@@ -1,0 +1,27 @@
+header {
+    background: blue;
+    color:aqua;
+}
+
+#main {
+    display: flex;
+}
+
+#gamearea {
+    height: 200px;
+    width: 65%;
+    border: solid black 2px;
+}
+
+#gametext {
+    
+    text-align: center;
+    font-family: monospace;
+    letter-spacing: 5px;
+    font-size: 32px;
+}
+
+#scorearea {
+    width: 35%;
+    border: solid blue 2px;
+}
