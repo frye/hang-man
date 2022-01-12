@@ -22,6 +22,35 @@ header {
 }
 
 #scorearea {
+    flex-direction: column;
     width: 35%;
     border: solid blue 2px;
+}
+
+#scorediv {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+#timerdiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30%;
+    border: solid cyan 2px;
+}
+
+#timer {
+    padding: 10px;
+}
+
+#time {
+    padding: 10px;
+}
+
+#score {
+    height: 70%;
+    border: solid red 2px;
 }
