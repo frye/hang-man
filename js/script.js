@@ -119,6 +119,6 @@ resetButton.addEventListener('click', function() {
     localStorage.setItem('losses', losses);
     updateScore();
 });
-timerSlider.addEventListener('change', sliderEvent);
+timerSlider.addEventListener('input', sliderEvent);
 
 init();
