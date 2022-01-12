@@ -10,6 +10,7 @@ var timeLeft = document.querySelector('#time');
 var hiddenWord = document.querySelector('#gametext');
 var scoreWins = document.querySelector('#wins');
 var scoreLosses = document.querySelector('#losses');
+var resultField = document.querySelector('#result');
 
 //arrays for letters, tried with strings but seems to be unnecessrily complicated as they are immutable
 var anwerLetters = [];
@@ -32,8 +33,9 @@ function loseGame() {
     losses++;
     localStorage.setItem('losses', losses);
     updateScore();
-    document.removeEventListener("keydown", keyboardInput);
-    alert('You lost!')
+    document.removeEventListener('keydown', keyboardInput);
+    resultField.textContent = 'Bummer, you lost! The wor was: ' + answerWord + '.';
+    resultField.setAttribute('style', 'background: orange;');
 }
 
 function winGame() {
@@ -42,7 +44,8 @@ function winGame() {
     wins++;
     localStorage.setItem('wins', wins);
     updateScore();
-    alert('You Won!');
+    resultField.textContent = 'Sweet victory!!!';
+    resultField.setAttribute('style', 'background: lightgreen;');
 }
 
 function startTimer() {
@@ -78,6 +81,8 @@ function playClicked() {
     if (timer) {
         clearInterval(timer);
     }
+    resultField.textContent = '';
+    resultField.setAttribute('style', 'background: white;');
     hiddenWord.textContent = '';
     answerWord = words[Math.floor(Math.random() * words.length)];
     console.log(answerWord);
