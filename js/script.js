@@ -11,6 +11,7 @@ var hiddenWord = document.querySelector('#gametext');
 var scoreWins = document.querySelector('#wins');
 var scoreLosses = document.querySelector('#losses');
 var resultField = document.querySelector('#result');
+var timerSlider = document.querySelector('#slider');
 
 //arrays for letters, tried with strings but seems to be unnecessrily complicated as they are immutable
 var anwerLetters = [];
@@ -20,6 +21,8 @@ function init() {
     timeLeft.textContent = gameTime;
     wins = localStorage.getItem('wins') || 0;
     losses = localStorage.getItem('losses') || 0;
+    gameTime = timerSlider.value;
+    timerSlider.disabled = false;
     updateScore();
 }
 
@@ -27,6 +30,11 @@ function updateScore() {
     scoreWins.textContent = 'Wins: ' + wins;
     scoreLosses.textContent = 'Loss: ' + losses;
 }
+
+var sliderEvent = function() {
+    gameTime = timerSlider.value;
+    timeLeft.textContent = gameTime;
+};
 
 function loseGame() {
     clearInterval(timer);
@@ -36,6 +44,7 @@ function loseGame() {
     document.removeEventListener('keydown', keyboardInput);
     resultField.textContent = 'Bummer, you lost! The word was: ' + answerWord + '.';
     resultField.setAttribute('style', 'background: orange;');
+    timerSlider.disabled = false;
 }
 
 function winGame() {
@@ -46,9 +55,12 @@ function winGame() {
     updateScore();
     resultField.textContent = 'Sweet victory!!!';
     resultField.setAttribute('style', 'background: lightgreen;');
+    timerSlider.disabled = false;
 }
 
 function startTimer() {
+    timerSlider.disabled = true;
+    gameTime = timerSlider.value;
     var remaining = gameTime;
     timeLeft.textContent = remaining;
     timer = setInterval(function () {
@@ -107,7 +119,6 @@ resetButton.addEventListener('click', function() {
     localStorage.setItem('losses', losses);
     updateScore();
 });
-
-
+timerSlider.addEventListener('change', sliderEvent);
 
 init();
