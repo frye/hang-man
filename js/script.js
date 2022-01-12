@@ -34,7 +34,7 @@ function loseGame() {
     localStorage.setItem('losses', losses);
     updateScore();
     document.removeEventListener('keydown', keyboardInput);
-    resultField.textContent = 'Bummer, you lost! The wor was: ' + answerWord + '.';
+    resultField.textContent = 'Bummer, you lost! The word was: ' + answerWord + '.';
     resultField.setAttribute('style', 'background: orange;');
 }
 
