@@ -11,6 +11,7 @@ var hiddenWord = document.querySelector('#gametext');
 var scoreWins = document.querySelector('#wins');
 var scoreLosses = document.querySelector('#losses');
 var resultField = document.querySelector('#result');
+var resultBox = document.querySelector('#center');
 var timerSlider = document.querySelector('#slider');
 
 //arrays for letters, tried with strings but seems to be unnecessrily complicated as they are immutable
@@ -43,7 +44,7 @@ function loseGame() {
     updateScore();
     document.removeEventListener('keydown', keyboardInput);
     resultField.textContent = 'Bummer, you lost! The word was: ' + answerWord + '.';
-    resultField.setAttribute('style', 'background: orange;');
+    resultBox.setAttribute('style', 'background: orange;');
     timerSlider.disabled = false;
 }
 
@@ -54,7 +55,7 @@ function winGame() {
     localStorage.setItem('wins', wins);
     updateScore();
     resultField.textContent = 'Sweet victory!!!';
-    resultField.setAttribute('style', 'background: lightgreen;');
+    resultBox.setAttribute('style', 'background: lightgreen;');
     timerSlider.disabled = false;
 }
 
@@ -94,7 +95,7 @@ function playClicked() {
         clearInterval(timer);
     }
     resultField.textContent = '';
-    resultField.setAttribute('style', 'background: white;');
+    resultBox.setAttribute('style', 'background: white;');
     hiddenWord.textContent = '';
     answerWord = words[Math.floor(Math.random() * words.length)];
     console.log(answerWord);
@@ -113,11 +114,13 @@ function playClicked() {
 
 playButton.addEventListener('click', playClicked);
 resetButton.addEventListener('click', function() {
-    wins = 0;
-    losses = 0;
-    localStorage.setItem('wins', wins);
-    localStorage.setItem('losses', losses);
-    updateScore();
+    if (confirm('Are you sure you want to reset scores?')) {
+        wins = 0;
+        losses = 0;
+        localStorage.setItem('wins', wins);
+        localStorage.setItem('losses', losses);
+        updateScore();
+    }
 });
 timerSlider.addEventListener('input', sliderEvent);
 

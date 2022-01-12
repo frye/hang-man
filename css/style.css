@@ -10,21 +10,22 @@ header {
 #gamearea {
     height: 200px;
     width: 65%;
-    border: solid black 2px;
+    border: solid black 4px;
+    border-right: 2px;
 }
 
 #gametext {
     
     text-align: center;
     font-family: monospace;
-    letter-spacing: 5px;
-    font-size: 32px;
+    letter-spacing: 10px;
+    font-size: 40px;
 }
 
 #scorearea {
     flex-direction: column;
     width: 35%;
-    border: solid blue 2px;
+    border: solid black 2px;
 }
 
 #scorediv {
@@ -39,7 +40,7 @@ header {
     justify-content: center;
     align-items: center;
     height: 30%;
-    border: solid cyan 2px;
+    border: solid black 2px;
 }
 
 #timer {
@@ -51,6 +52,23 @@ header {
 }
 
 #score {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     height: 70%;
-    border: solid red 2px;
+    border: solid black 2px;
+}
+
+#center {
+    width: 60%;
+    height: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    margin: 5px;
+}
+
+#result {
+    margin: 0px;
 }
